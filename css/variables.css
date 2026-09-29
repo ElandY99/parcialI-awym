@@ -1,0 +1,83 @@
+/* ==========================================================================
+   VARIABLES Y SISTEMA DE DISEÑO
+   ========================================================================== */
+
+:root {
+    /* Paleta de Colores Base (Extraída de la imagen de fondo y temática retro) */
+    --color-bg-dark: #11121a;
+    /* Fondo noche profundo */
+    --color-bg-panel: rgba(37, 35, 87, 0.92);
+    /* Panel morado translúcido (#252357) */
+    --color-bg-panel-alt: rgba(17, 18, 26, 0.88);
+    /* Fondo secundario más oscuro */
+    --color-bg-card: rgba(72, 47, 151, 0.35);
+    /* Fondo para tarjetas internas (#482f97) */
+
+    /* Acentos y Tonos Principales */
+    --color-primary: #6960c3;
+    /* Violeta consola brillante */
+    --color-primary-dark: #482f97;
+    /* Violeta profundo */
+    --color-accent-green: #4db85b;
+    /* Verde vida / éxito / botón principal */
+    --color-accent-forest: #267858;
+    /* Verde bosque oscuro */
+    --color-accent-teal: #154e4f;
+    /* Verde azulado para detalles */
+    --color-accent-pink: #7c5674;
+    /* Rosa magenta clásico */
+    --color-accent-berry: #553858;
+    /* Baya oscuro */
+    --color-accent-rose: #bca4a1;
+    /* Rosa pálido / texto secundario suave */
+
+    /* Estados y Retroalimentación */
+    --color-success: #4db85b;
+    /* Indicador de éxito */
+    --color-warning: #f1c40f;
+    /* Indicador de advertencia / monedas */
+    --color-error: #ff4757;
+    /* Rojo pixel de error */
+    --color-error-bg: rgba(255, 71, 87, 0.15);
+    /* Fondo suave de alerta */
+
+    /* Tipografía y Textos */
+    --color-text-main: #f5f6fa;
+    /* Blanco roto de alto contraste */
+    --color-text-muted: #bca4a1;
+    /* Texto secundario de lectura agradable */
+    --color-text-gold: #ffd32a;
+    /* Amarillo dorado retro para destacados */
+
+    /* Fuentes Retro */
+    --font-pixel: 'Press Start 2P', monospace, sans-serif;
+    /* Títulos, botones y badges */
+    --font-retro: 'VT323', monospace, sans-serif;
+    /* Párrafos, campos y tablas */
+
+    /* Bordes Estilo Pixel Art (Simulación de biselado retro de consolas) */
+    --border-pixel-outer: 4px solid #11121a;
+    --border-pixel-inner: 2px solid #6960c3;
+    --border-box-gold: 3px solid #ffd32a;
+    --border-box-green: 3px solid #4db85b;
+    --border-box-error: 3px solid #ff4757;
+
+    /* Sombras Pixeladas (Bloques duros sin blur, clásicos de 16/32 bits) */
+    --shadow-pixel-sm: 3px 3px 0px #11121a;
+    --shadow-pixel-md: 5px 5px 0px #11121a;
+    --shadow-pixel-lg: 8px 8px 0px #11121a;
+    --shadow-btn-green: 0 4px 0 #267858, 0 6px 0 #11121a;
+    --shadow-btn-purple: 0 4px 0 #482f97, 0 6px 0 #11121a;
+
+    /* Espaciado */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+
+    /* Transiciones */
+    --transition-fast: 0.15s ease-in-out;
+    --transition-normal: 0.3s ease;
+}

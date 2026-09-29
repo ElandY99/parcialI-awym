@@ -1,0 +1,332 @@
+/* ==========================================================================
+   FORMULARIO Y ESTADOS DE INTERACCIÓN
+   Estilos de controles, validación interactiva, mensajes de error y resumen DOM.
+   ========================================================================== */
+
+.form-container {
+    width: 100%;
+}
+
+.inscription-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+/* Grupo de campo del formulario */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    position: relative;
+}
+
+/* Lables */
+.form-label {
+    font-family: var(--font-pixel);
+    font-size: 0.75rem;
+    color: var(--color-text-main);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.form-label--required::after {
+    content: "*";
+    color: var(--color-error);
+    font-size: 0.9rem;
+}
+
+/* Controles de entrada de texto, números y selección */
+.form-control {
+    width: 100%;
+    background-color: #0b0c13;
+    color: var(--color-text-main);
+    font-family: var(--font-retro);
+    font-size: 1.4rem;
+    padding: 0.6rem 0.8rem;
+    border: 3px solid var(--color-primary-dark);
+    box-shadow: inset 3px 3px 0px rgba(0, 0, 0, 0.7);
+    border-radius: 2px;
+    outline: none;
+    transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.form-control::placeholder {
+    color: #6960c3;
+    opacity: 0.7;
+}
+
+.form-control:focus {
+    border-color: var(--color-text-gold);
+    background-color: #151624;
+    box-shadow: 0 0 0 2px rgba(255, 211, 42, 0.4), inset 3px 3px 0px rgba(0, 0, 0, 0.7);
+}
+
+/* Área de texto */
+textarea.form-control {
+    resize: vertical;
+    min-height: 100px;
+    line-height: 1.35;
+}
+
+/* Selector desplegable */
+select.form-control {
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23ffd32a' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1.5rem;
+    padding-right: 2.5rem;
+}
+
+select.form-control option {
+    background-color: #11121a;
+    color: var(--color-text-main);
+}
+
+/* Selector de modalidad (Radio Buttons) con estética retro de casilla */
+.form-fieldset {
+    border: 2px dashed var(--color-primary);
+    padding: var(--space-md);
+    background: rgba(17, 18, 26, 0.5);
+    border-radius: 2px;
+}
+
+.form-legend {
+    font-family: var(--font-pixel);
+    font-size: 0.75rem;
+    color: var(--color-text-gold);
+    padding: 0 var(--space-xs);
+    text-transform: uppercase;
+}
+
+.form-radio-group {
+    display: flex;
+    gap: var(--space-lg);
+    margin-top: var(--space-xs);
+    flex-wrap: wrap;
+}
+
+.form-radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.35rem;
+    color: var(--color-text-main);
+    user-select: none;
+}
+
+/* Radio button personalizado retro */
+.form-radio-input {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #0b0c13;
+    border: 2px solid var(--color-primary);
+    border-radius: 2px;
+    display: grid;
+    place-content: center;
+    transition: border-color var(--transition-fast);
+}
+
+.form-radio-input::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: var(--color-accent-green);
+    transform: scale(0);
+    transition: transform var(--transition-fast);
+}
+
+.form-radio-input:checked {
+    border-color: var(--color-accent-green);
+}
+
+.form-radio-input:checked::before {
+    transform: scale(1);
+}
+
+/* Mensaje dinámico según la modalidad elegida (comportamiento interactivo change) */
+.modality-hint {
+    margin-top: var(--space-xs);
+    font-size: 1.2rem;
+    color: var(--color-accent-rose);
+    display: none;
+    padding: 0.3rem 0.6rem;
+    background: rgba(37, 35, 87, 0.4);
+    border-left: 3px solid var(--color-accent-green);
+}
+
+.modality-hint.is-visible {
+    display: block;
+    animation: rpgSlideUp 0.2s ease-out;
+}
+
+/* Contador de caracteres dinámico para comentarios (comportamiento interactivo input) */
+.char-counter {
+    align-self: flex-end;
+    font-family: var(--font-pixel);
+    font-size: 0.6rem;
+    color: var(--color-text-muted);
+    margin-top: 0.2rem;
+}
+
+/* --------------------------------------------------------------------------
+   ESTADOS DE VALIDACIÓN Y ERRORES (Puntos F.3 y H)
+   -------------------------------------------------------------------------- */
+
+/* Campo con error */
+.form-group.has-error .form-control,
+.form-group.has-error .form-fieldset {
+    border-color: var(--color-error);
+    background-color: rgba(255, 71, 87, 0.08);
+}
+
+/* Texto de mensaje de error debajo del campo */
+.form-error-msg {
+    display: none;
+    font-family: var(--font-pixel);
+    font-size: 0.65rem;
+    color: var(--color-error);
+    margin-top: 0.3rem;
+    line-height: 1.3;
+}
+
+.form-group.has-error .form-error-msg {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.form-group.has-error .form-error-msg::before {
+    content: "✖";
+    font-weight: bold;
+}
+
+/* Banner de error general (Estado de datos incompletos - Punto H.4) */
+.form-alert {
+    display: none;
+    background: var(--color-error-bg);
+    border: 2px solid var(--color-error);
+    padding: var(--space-md);
+    margin-bottom: var(--space-md);
+    box-shadow: var(--shadow-pixel-sm);
+    color: #ffffff;
+    border-radius: 2px;
+}
+
+.form-alert.is-visible {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    animation: rpgSlideUp 0.3s ease-out;
+}
+
+.form-alert__icon {
+    font-size: 1.5rem;
+    color: var(--color-error);
+}
+
+.form-alert__text {
+    font-family: var(--font-pixel);
+    font-size: 0.7rem;
+    line-height: 1.4;
+}
+
+/* --------------------------------------------------------------------------
+   ESTADO EXITOSO Y RESUMEN DOM (Puntos G y H.3)
+   -------------------------------------------------------------------------- */
+.summary-container {
+    display: none;
+    animation: rpgSlideUp 0.4s ease-out;
+}
+
+.summary-container.is-visible {
+    display: block;
+}
+
+.summary-banner {
+    background: rgba(77, 184, 91, 0.15);
+    border: 3px solid var(--color-accent-green);
+    padding: var(--space-md);
+    text-align: center;
+    margin-bottom: var(--space-lg);
+    box-shadow: 0 0 15px rgba(77, 184, 91, 0.3);
+}
+
+.summary-banner__title {
+    font-family: var(--font-pixel);
+    font-size: 1.1rem;
+    color: var(--color-accent-green);
+    text-transform: uppercase;
+    margin-bottom: var(--space-xs);
+}
+
+.summary-banner__subtitle {
+    font-size: 1.4rem;
+    color: var(--color-text-main);
+}
+
+/* Ficha de datos del inscripto generada dinámicamente en el DOM */
+.summary-card {
+    background: var(--color-bg-card);
+    border: 2px solid var(--color-primary);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--space-xs) 0;
+    border-bottom: 1px dashed rgba(105, 96, 195, 0.4);
+    font-size: 1.35rem;
+}
+
+.summary-row:last-child {
+    border-bottom: none;
+}
+
+.summary-row__label {
+    font-family: var(--font-pixel);
+    font-size: 0.7rem;
+    color: var(--color-text-gold);
+    text-transform: uppercase;
+}
+
+.summary-row__value {
+    color: var(--color-text-main);
+    font-weight: bold;
+    text-align: right;
+}
+
+.summary-actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   RESPONSIVE FORMULARIO
+   ========================================================================== */
+@media (max-width: 767px) {
+    .form-radio-group {
+        flex-direction: column;
+        gap: var(--space-sm);
+    }
+
+    .summary-row {
+        flex-direction: column;
+        gap: 0.2rem;
+    }
+
+    .summary-row__value {
+        text-align: left;
+    }
+}

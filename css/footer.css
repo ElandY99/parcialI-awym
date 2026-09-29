@@ -1,0 +1,66 @@
+/* ==========================================================================
+   FOOTER RETRO (Barra de Estado / HUD de Consola)
+   ========================================================================== */
+
+.footer {
+    background: rgba(11, 12, 19, 0.95);
+    border-top: 4px solid var(--color-primary-dark);
+    box-shadow: 0 -4px 0 #252357, 0 -8px 12px rgba(0, 0, 0, 0.6);
+    padding: var(--space-md) var(--space-md);
+    margin-top: auto;
+    width: 100%;
+}
+
+.footer__container {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-xs);
+}
+
+.footer__student-info {
+    font-family: var(--font-pixel);
+    font-size: 0.7rem;
+    color: var(--color-text-gold);
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+}
+
+.footer__academic-info {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+}
+
+.footer__badge-retro {
+    margin-top: var(--space-xs);
+    font-family: var(--font-pixel);
+    font-size: 0.55rem;
+    color: var(--color-accent-green);
+    background: #11121a;
+    padding: 0.25rem 0.5rem;
+    border: 1px dashed var(--color-accent-green);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+/* ==========================================================================
+   RESPONSIVE FOOTER
+   ========================================================================== */
+@media (max-width: 767px) {
+    .footer {
+        padding: var(--space-md) var(--space-sm);
+    }
+
+    .footer__student-info {
+        font-size: 0.65rem;
+    }
+
+    .footer__academic-info {
+        font-size: 1.15rem;
+    }
+}

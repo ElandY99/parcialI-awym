@@ -1,0 +1,160 @@
+/* ==========================================================================
+   SECCIONES DE CONTENIDO RETRO
+   Estilizado de las secciones Inicio e Información
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   SECCIÓN 1: INICIO (HERO / PORTADA)
+   -------------------------------------------------------------------------- */
+.hero {
+    text-align: center;
+    padding: var(--space-2xl) var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+}
+
+.hero__badge-container {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--space-xs);
+}
+
+.hero__title {
+    font-family: var(--font-pixel);
+    font-size: clamp(1.2rem, 3.5vw, 2.2rem);
+    color: var(--color-text-gold);
+    line-height: 1.4;
+    text-shadow: 4px 4px 0px #11121a, 0 0 20px rgba(105, 96, 195, 0.6);
+    max-width: 900px;
+    letter-spacing: 1px;
+}
+
+.hero__subtitle {
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    color: var(--color-accent-rose);
+    max-width: 780px;
+    line-height: 1.3;
+}
+
+.hero__description {
+    max-width: 740px;
+    font-size: 1.5rem;
+    color: var(--color-text-main);
+    background: rgba(17, 18, 26, 0.7);
+    padding: var(--space-md) var(--space-lg);
+    border: 2px dashed var(--color-primary);
+    border-radius: 4px;
+    line-height: 1.4;
+}
+
+.hero__actions {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: var(--space-sm);
+}
+
+/* --------------------------------------------------------------------------
+   SECCIÓN 2: INFORMACIÓN DE LA ACTIVIDAD (Punto B)
+   -------------------------------------------------------------------------- */
+.info-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.info-intro {
+    font-size: 1.45rem;
+    line-height: 1.4;
+    color: var(--color-text-main);
+}
+
+/* Items individuales dentro del Grid de información */
+.info-item {
+    background: var(--color-bg-card);
+    border: 2px solid var(--color-primary-dark);
+    padding: var(--space-md);
+    box-shadow: var(--shadow-pixel-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    position: relative;
+    transition: transform var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.info-item:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-accent-green);
+    background: rgba(72, 47, 151, 0.55);
+}
+
+.info-item__label {
+    font-family: var(--font-pixel);
+    font-size: 0.75rem;
+    color: var(--color-text-gold);
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    text-transform: uppercase;
+}
+
+.info-item__label-icon {
+    font-size: 1rem;
+}
+
+.info-item__value {
+    font-size: 1.45rem;
+    color: var(--color-text-main);
+    line-height: 1.35;
+}
+
+.info-item__description {
+    font-size: 1.35rem;
+    color: var(--color-text-muted);
+    margin-top: var(--space-xs);
+    line-height: 1.4;
+}
+
+/* Contador dinámico de cupos en tiempo real */
+.slots-counter {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-family: var(--font-pixel);
+    font-size: 0.9rem;
+    color: var(--color-accent-green);
+    background: #11121a;
+    padding: 0.4rem 0.8rem;
+    border: 2px solid var(--color-accent-green);
+    border-radius: 2px;
+    margin-top: var(--space-xs);
+}
+
+.slots-counter__number {
+    font-size: 1.2rem;
+    color: var(--color-text-gold);
+}
+
+/* ==========================================================================
+   RESPONSIVE SECCIONES
+   ========================================================================== */
+@media (max-width: 767px) {
+    .hero {
+        padding: var(--space-xl) var(--space-sm);
+        gap: var(--space-md);
+    }
+
+    .hero__actions {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .hero__actions .btn {
+        width: 100%;
+    }
+}

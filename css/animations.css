@@ -1,0 +1,92 @@
+/* ==========================================================================
+   ANIMACIONES RETRO (Keyframes y Efectos)
+   ========================================================================== */
+
+/* Efecto de parpadeo retro para cursores y señales de 'Insert Coin' */
+@keyframes retroBlink {
+
+    0%,
+    49% {
+        opacity: 1;
+    }
+
+    50%,
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Levitación suave estilo objetos flotantes de plataformas */
+@keyframes floatPixel {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+/* Pulso de atención para cupos o avisos importantes */
+@keyframes pulseBadge {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Entrada deslizante estilo cuadro de diálogo RPG */
+@keyframes rpgSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Efecto brillo para logros o confirmación exitosa */
+@keyframes victoryGaze {
+    0% {
+        box-shadow: 0 0 0 0 rgba(77, 184, 91, 0.6);
+    }
+
+    70% {
+        box-shadow: 0 0 0 12px rgba(77, 184, 91, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(77, 184, 91, 0);
+    }
+}
+
+/* Clases de utilidad para aplicar animaciones */
+.anim-blink {
+    animation: retroBlink 1s infinite;
+}
+
+.anim-float {
+    animation: floatPixel 2.5s ease-in-out infinite;
+}
+
+.anim-pulse {
+    animation: pulseBadge 2s infinite ease-in-out;
+}
+
+.anim-slide-up {
+    animation: rpgSlideUp 0.4s ease-out forwards;
+}
+
+.anim-victory {
+    animation: victoryGaze 1.5s infinite;
+}
