@@ -34,6 +34,12 @@ export function initFormHandler() {
     // Actualiza el contador inicial de cupos
     updateSlotsDisplay(slotsElement);
 
+    // Si ya no hay cupos, ocultar el formulario completo y mostrar mensaje
+    if (getAvailableSlots() === 0) {
+        showFullSlotsMessage(form, alertBox, summaryContainer);
+        return;
+    }
+
     // Eventos input y change
     // Contador dinámico de caracteres en el campo de comentarios (evento input)
     if (commentsInput && charCounter) {
@@ -96,8 +102,15 @@ export function initFormHandler() {
         clearAllFieldErrors();
 
         // Guarda la inscripción en localStorage
-        const saveSuccess = saveInscription(formData);
-        if (!saveSuccess) {
+        const saveResult = saveInscription(formData);
+
+        if (saveResult === 'full') {
+            // Cupos agotados (posible condición de carrera entre pestañas)
+            showFullSlotsMessage(form, alertBox, summaryContainer);
+            return;
+        }
+
+        if (!saveResult) {
             alert('Ocurrió un error al guardar tu inscripción. Por favor intenta nuevamente.');
             return;
         }
@@ -221,8 +234,8 @@ function renderInscriptionSummary(data, container, onResetCallback) {
     const banner = document.createElement('div');
     banner.className = 'summary-banner';
     banner.innerHTML = `
-        <h3 class="summary-banner__title">★ ¡INSCRIPCIÓN REGISTRADA CON ÉXITO! ★</h3>
-        <p class="summary-banner__subtitle">Tu lugar en el taller se reservó correctamente, no faltes.</p>
+        <h3 class="summary-banner__title">★ ÉSITO AL INSCRIBITE ★</h3>
+        <p class="summary-banner__subtitle">Tu lugar en el taller se reservó correctamente, no vayas a faltar mi rey/na</p>
     `;
 
     // Tarjeta con detalle de los datos ingresados
@@ -349,4 +362,39 @@ function escapeHtml(str) {
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#039;');
+}
+
+// Dormiste pa...
+function showFullSlotsMessage(form, alertBox, summaryContainer) {
+    // Ocultar el formulario y el banner de alerta
+    if (form) form.style.display = 'none';
+    if (alertBox) alertBox.classList.remove('is-visible');
+
+    // Cambiar el badge de "REGISTRO ABIERTO" a "REGISTRO CERRADO"
+    const badge = document.querySelector('.form-section .badge');
+    if (badge) {
+        badge.textContent = 'REGISTRO CERRADO';
+        badge.classList.remove('badge--green');
+        badge.classList.add('badge--red');
+    }
+
+    // Mostrar mensaje de cupos agotados en el contenedor de resumen
+    if (summaryContainer) {
+        summaryContainer.innerHTML = '';
+
+        const messageCard = document.createElement('div');
+        messageCard.className = 'panel panel--gold summary-wrapper';
+
+        messageCard.innerHTML = `
+            <div class="summary-banner">
+                <h3 class="summary-banner__title">🚫 F los cupos...</h3>
+                <p class="summary-banner__subtitle">
+                    Dormiste pa... No quedan más cupos...
+                </p>
+            </div>
+        `;
+
+        summaryContainer.appendChild(messageCard);
+        summaryContainer.classList.add('is-visible');
+    }
 }

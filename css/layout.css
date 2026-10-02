@@ -59,7 +59,7 @@ main {
     width: 100%;
 }
 
-/* Grid de información del taller (Uso de CSS Grid como exige el punto C.2) */
+/* Grid de información del taller */
 .info-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -73,7 +73,7 @@ main {
 }
 
 /* ==========================================================================
-   DISEÑO RESPONSIVE (Computadora, Tablet y Smartphone - Punto D)
+   RESPONSIVE
    ========================================================================== */
 
 /* Tablets y pantallas medianas (de 768px a 1023px) */
@@ -90,7 +90,7 @@ main {
     }
 }
 
-/* Smartphones y pantallas pequeñas (menos de 768px) */
+/* clulares (menos de 768px) */
 @media (max-width: 767px) {
     main {
         width: 100%;
@@ -98,7 +98,7 @@ main {
         gap: var(--space-lg);
     }
 
-    /* En smartphones la rejilla pasa a columna única */
+    /* En celulares la rejilla pasa a columna única */
     .info-grid {
         grid-template-columns: 1fr;
         gap: var(--space-md);

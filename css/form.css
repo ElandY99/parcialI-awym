@@ -174,7 +174,7 @@ select.form-control option {
 }
 
 /* --------------------------------------------------------------------------
-   ESTADOS DE VALIDACIÓN Y ERRORES (Puntos F.3 y H)
+   ESTADOS DE VALIDACIÓN Y ERRORES
    -------------------------------------------------------------------------- */
 
 /* Campo con error */
@@ -205,7 +205,7 @@ select.form-control option {
     font-weight: bold;
 }
 
-/* Banner de error general (Estado de datos incompletos - Punto H.4) */
+/* Banner de error general */
 .form-alert {
     display: none;
     background: var(--color-error-bg);
@@ -236,7 +236,7 @@ select.form-control option {
 }
 
 /* --------------------------------------------------------------------------
-   ESTADO EXITOSO Y RESUMEN DOM (Puntos G y H.3)
+   ESTADO EXITOSO Y RESUMEN DOM
    -------------------------------------------------------------------------- */
 .summary-container {
     display: none;
@@ -313,7 +313,7 @@ select.form-control option {
 }
 
 /* ==========================================================================
-   RESPONSIVE FORMULARIO
+   RESPONSIVE
    ========================================================================== */
 @media (max-width: 767px) {
     .form-radio-group {

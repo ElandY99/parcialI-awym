@@ -60,7 +60,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   SECCIÓN 2: INFORMACIÓN DE LA ACTIVIDAD (Punto B)
+   SECCIÓN 2: INFORMACIÓN DE LA ACTIVIDAD
    -------------------------------------------------------------------------- */
 .info-section {
     display: flex;
@@ -120,7 +120,7 @@
     line-height: 1.4;
 }
 
-/* Contador dinámico de cupos en tiempo real */
+/* Contador dinámico de cupos */
 .slots-counter {
     display: inline-flex;
     align-items: center;
@@ -141,7 +141,7 @@
 }
 
 /* ==========================================================================
-   RESPONSIVE SECCIONES
+   RESPONSIVE
    ========================================================================== */
 @media (max-width: 767px) {
     .hero {

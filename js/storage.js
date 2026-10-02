@@ -16,9 +16,16 @@ export function getInscriptions() {
 }
 
 // Guarda una nueva inscripción en localStorage.
+// Retorna true si se guardó correctamente, 'full' si no hay cupos, o false ante un error.
 export function saveInscription(inscription) {
     try {
         const inscriptions = getInscriptions();
+
+        // Validación: no permitir más de TOTAL_SLOTS (30) registros
+        if (inscriptions.length >= TOTAL_SLOTS) {
+            return 'full';
+        }
+
         const newRecord = {
             id: 'INS-' + Date.now().toString(36).toUpperCase(),
             ...inscription,

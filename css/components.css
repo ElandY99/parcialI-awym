@@ -9,7 +9,7 @@
     outline: 2px solid var(--color-primary);
     outline-offset: -6px;
     box-shadow: var(--shadow-pixel-lg);
-    padding: var(--space-xl);
+    padding: var(--space-md);
     position: relative;
     backdrop-filter: blur(4px);
     border-radius: 4px;
